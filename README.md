@@ -1,6 +1,6 @@
 # crm-field-trust-gate
 
-![tests](https://github.com/himanshupalerwal/crm-field-trust-gate/actions/workflows/tests.yml/badge.svg)
+![tests](https://github.com/himanshupalerwal/crm-field-trust-gate/actions/workflows/tests.yml/badge.svg) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23242906.svg)](https://doi.org/10.5281/zenodo.23242906)
 
 **Decide, field by field, what an AI agent may act on in your CRM, and measure it on your own data.**
 
@@ -201,13 +201,14 @@ Everything is synthetic. The defect rates in `simulate.py` (`ASSUMED_RATES`, `LO
 
 ## How to cite
 
-If this work helps yours, please cite it ([Himanshu Palerwal, ORCID 0009-0004-1752-2857](https://orcid.org/0009-0004-1752-2857)), with the version you used. The **Cite this repository** button on this page, generated from [`CITATION.cff`](CITATION.cff), gives APA and BibTeX. A citation for the article will be added here once it is published.
+If this work helps yours, please cite it ([Himanshu Palerwal, ORCID 0009-0004-1752-2857](https://orcid.org/0009-0004-1752-2857)), with the version you used. The **Cite this repository** button on this page, generated from [`CITATION.cff`](CITATION.cff), gives APA and BibTeX. Each release is archived on Zenodo: [10.5281/zenodo.23242907](https://doi.org/10.5281/zenodo.23242907) is version 1.0.0, and [10.5281/zenodo.23242906](https://doi.org/10.5281/zenodo.23242906) always resolves to the latest version. A citation for the article will be added here once it is published.
 
 ```bibtex
 @misc{palerwal2026gate,
   author       = {Palerwal, Himanshu},
   title        = {crm-field-trust-gate},
   note         = {Version 1.0.0},
+  doi          = {10.5281/zenodo.23242907},
   year         = {2026},
   howpublished = {\url{https://github.com/himanshupalerwal/crm-field-trust-gate}}
 }

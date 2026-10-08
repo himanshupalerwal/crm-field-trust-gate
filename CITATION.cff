@@ -11,6 +11,14 @@ authors:
   - given-names: Himanshu
     family-names: Palerwal
     orcid: "https://orcid.org/0009-0004-1752-2857"
+doi: 10.5281/zenodo.23242907
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23242907
+    description: This version (1.0.0), archived on Zenodo
+  - type: doi
+    value: 10.5281/zenodo.23242906
+    description: All versions; resolves to the latest
 repository-code: "https://github.com/himanshupalerwal/crm-field-trust-gate"
 license: MIT
 version: "1.0.0"
