@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quote_Recipient__c</fullName>
+    <label>Quote Recipient</label>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Renewal Quotes</relationshipLabel>
+    <relationshipName>Renewal_Quotes</relationshipName>
+</CustomField>

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: >-
+  If this work helps yours, please cite it as below, with the version you used.
+title: crm-field-trust-gate
+abstract: >-
+  Companion code for an upcoming article: a field-level trust contract, a gate that
+  enforces it before an AI agent writes to a CRM, provenance stamps on agent writes,
+  two simulations, and a read-only audit of real CRM exports.
+type: software
+authors:
+  - given-names: Himanshu
+    family-names: Palerwal
+    orcid: "https://orcid.org/0009-0004-1752-2857"
+repository-code: "https://github.com/himanshupalerwal/crm-field-trust-gate"
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-08"
+keywords:
+  - agentic-ai
+  - data-quality
+  - data-contracts
+  - crm
+  - llm-agents
+  - provenance

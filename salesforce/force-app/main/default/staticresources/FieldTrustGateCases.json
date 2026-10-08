@@ -1,0 +1,8632 @@
+{
+ "cases": [
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 168,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 72,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not crm",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [],
+   "reasons": [
+    "no declared inputs"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "Sales_Rep",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: older than its SLA",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: last written by Sales_Rep",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "unknown",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by agent:renewal",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not health_model",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "Sales_Rep",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not contracts",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: last written by Sales_Rep",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: 0 records match, expected 1",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "health_model",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.ARR: last written by health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not billing",
+    "Contact.Role: last written by billing_sync"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Health_Score",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not crm",
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: 3 records match, expected 1",
+    "Account.Health_Score: last written by agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.ARR: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "unknown",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: 0 records match, expected 1",
+    "Account.Health_Score: last written by unknown"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: last written by billing_sync",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "contract_sync",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by contract_sync",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "billing_sync",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not unknown",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not unknown",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by Agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not health_model",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not health_model",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 3 records match, expected 1",
+    "Account.ARR: last written by unmapped",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 0 records match, expected 1",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by agent:renewal",
+    "Opportunity.Renewal_Date: 3 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "contract_sync",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: authority is health_model, not unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: 0 records match, expected 1",
+    "Account.Health_Score: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "Agent:renewal",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by Agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not unknown",
+    "Contact.Role: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "Sales_Rep",
+     "matches": 3,
+     "name": "Contact.Role",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not Crm",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: 3 records match, expected 1",
+    "Contact.Role: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not health_model",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "Sales_Rep",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 3 records match, expected 1",
+    "Account.ARR: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not unknown",
+    "Account.Description: older than its SLA",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: older than its SLA",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not contracts",
+    "Contact.Role: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Opportunity.Renewal_Date: last written by health_model"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Contact.Role",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not Crm",
+    "Contact.Role: 2 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 0,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: older than its SLA"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by Agent:renewal",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "Sales_Rep",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not agent",
+    "Account.Health_Score: older than its SLA"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "Agent:renewal",
+     "matches": 2,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: 2 records match, expected 1",
+    "Account.Description: last written by Agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: last written by agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not unknown",
+    "Account.Health_Score: older than its SLA"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "unknown",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not contracts",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by unknown",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.Health_Score: 2 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not health_model",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by unknown"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "health_model",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not unknown",
+    "Opportunity.Renewal_Date: last written by agent:other",
+    "Contact.Role: authority is crm, not unknown",
+    "Contact.Role: older than its SLA"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not unknown",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by agent:renewal",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Health_Score: 2 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not health_model",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 3 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "billing_sync",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by billing_sync",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.ARR: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "unknown",
+     "matches": 2,
+     "name": "Account.Health_Score",
+     "source_system": "Health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not Health_model",
+    "Account.Health_Score: 2 records match, expected 1",
+    "Account.Health_Score: last written by unknown",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:other",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "Billing"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: last written by billing_sync",
+    "Account.ARR: authority is billing, not Billing",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 0 records match, expected 1",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "agent:renewal",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "Billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not Billing",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not contracts",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by unknown",
+    "Account.Health_Score: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: last written by agent:renewal"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: older than its SLA",
+    "Contact.Role: 2 records match, expected 1",
+    "Contact.Role: last written by health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not crm",
+    "Opportunity.Renewal_Date: 2 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by Sales_Rep",
+    "Account.Description: context only, cannot drive a write",
+    "Contact.Role: last written by billing_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not Crm"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "unmapped",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by unknown",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: last written by unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "Agent:renewal",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not health_model",
+    "Contact.Role: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "unmapped",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "Billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: last written by Sales_Rep",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: 0 records match, expected 1",
+    "Account.Health_Score: last written by unmapped",
+    "Account.ARR: authority is billing, not Billing",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "unmapped",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not health_model",
+    "Contact.Role: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not agent",
+    "Opportunity.Renewal_Date: last written by billing_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: authority is crm, not contracts",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "Sales_Rep",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: last written by unknown"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: older than its SLA",
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: last written by agent:other",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not contracts",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: older than its SLA",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "unknown"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not unknown",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 0 records match, expected 1",
+    "Account.Description: authority is crm, not contracts",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 2 records match, expected 1",
+    "Account.Description: last written by health_model",
+    "Account.Description: context only, cannot drive a write",
+    "Account.ARR: older than its SLA"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 3,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: 3 records match, expected 1",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "contract_sync",
+     "matches": 0,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: older than its SLA",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 3,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not health_model",
+    "Opportunity.Renewal_Date: 3 records match, expected 1",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: authority is health_model, not crm",
+    "Account.Health_Score: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by unknown",
+    "Account.Description: context only, cannot drive a write",
+    "Opportunity.Renewal_Date: authority is contracts, not billing",
+    "Opportunity.Renewal_Date: 2 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not unknown",
+    "Account.Description: last written by health_model",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: older than its SLA"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Contact.Role: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 2 records match, expected 1",
+    "Account.Description: context only, cannot drive a write",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: older than its SLA",
+    "Contact.Role: 3 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 2,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: 2 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "Agent:renewal",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not agent",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: 3 records match, expected 1",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unknown",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Health_Score: authority is health_model, not crm",
+    "Account.Health_Score: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "unmapped",
+     "matches": 0,
+     "name": "Account.Health_Score",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not crm",
+    "Account.Health_Score: 0 records match, expected 1",
+    "Account.Health_Score: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "Agent:renewal",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "agent:renewal",
+     "matches": 0,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Description: older than its SLA",
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by Agent:renewal",
+    "Account.Description: context only, cannot drive a write",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 0 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by agent:renewal"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unknown",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: 2 records match, expected 1",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "agent:renewal",
+     "matches": 2,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not health_model",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 2 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: context only, cannot drive a write",
+    "Opportunity.Renewal_Date: authority is contracts, not unknown",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "unknown",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: last written by unknown",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:other",
+     "matches": 2,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 2 records match, expected 1",
+    "Account.Description: last written by agent:other",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 2,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: 2 records match, expected 1",
+    "Contact.Role: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: 3 records match, expected 1",
+    "Account.Health_Score: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "agent:other",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "Billing"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 3,
+     "name": "Account.Health_Score",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not Billing",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 3 records match, expected 1",
+    "Account.ARR: last written by agent:other",
+    "Account.Health_Score: authority is health_model, not billing",
+    "Account.Health_Score: 3 records match, expected 1",
+    "Account.Health_Score: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not crm",
+    "Account.ARR: last written by unmapped",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not agent",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not crm",
+    "Account.Health_Score: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "Agent:renewal",
+     "matches": 0,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 0 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by Agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "Agent:renewal",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not crm",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:other",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not Crm",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: last written by agent:other",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "Billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not Billing",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by agent:renewal",
+    "Account.ARR: authority is billing, not contracts",
+    "Account.ARR: 3 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not Crm",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not billing",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 3 records match, expected 1",
+    "Account.Description: last written by agent:renewal",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not agent",
+    "Account.Health_Score: older than its SLA"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "contract_sync",
+     "matches": 2,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Health_Score: 2 records match, expected 1",
+    "Account.Health_Score: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not billing",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "contract_sync",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Contact.Role",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not contracts",
+    "Contact.Role: 0 records match, expected 1",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: last written by unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "contract_sync",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "unknown",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not agent",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 3 records match, expected 1",
+    "Account.ARR: last written by unknown"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: older than its SLA",
+    "Account.Description: last written by agent:other",
+    "Account.Description: context only, cannot drive a write",
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not agent"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.ARR",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not crm",
+    "Account.ARR: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not contracts",
+    "Account.Description: older than its SLA",
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "agent:other",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "unknown",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 0,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not billing",
+    "Opportunity.Renewal_Date: 0 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unknown",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not Crm",
+    "Contact.Role: last written by unknown",
+    "Account.ARR: last written by agent:renewal"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: older than its SLA",
+    "Account.Health_Score: last written by Agent:renewal",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by Sales_Rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: 2 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 200,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:other",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not crm",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not crm",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "Agent:renewal",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not health_model",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by Agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 0,
+     "name": "Contact.Role",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not agent",
+    "Contact.Role: 0 records match, expected 1",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "agent:renewal",
+     "matches": 2,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 2 records match, expected 1",
+    "Account.ARR: last written by agent:renewal"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: 2 records match, expected 1",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 0,
+     "name": "Account.Description",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not Crm",
+    "Account.Description: 0 records match, expected 1",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 40,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 3 records match, expected 1",
+    "Account.ARR: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: last written by agent:other",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by unmapped",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "Contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: authority is contracts, not Contracts"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "unknown",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "unmapped",
+     "matches": 2,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: last written by Sales_Rep",
+    "Opportunity.Renewal_Date: authority is contracts, not agent",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 2 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by unmapped"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 3000,
+     "last_writer": "unknown",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 3000,
+     "last_writer": "Agent:renewal",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not contracts",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by Agent:renewal",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not contracts",
+    "Account.Description: last written by billing_sync",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "Crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "agent:renewal",
+     "matches": 3,
+     "name": "Contact.Role",
+     "source_system": "agent"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not agent",
+    "Contact.Role: 3 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "agent:other",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: authority is crm, not unknown",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 1,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "Health_model"
+    }
+   ],
+   "reasons": [
+    "Contact.Role: last written by contract_sync",
+    "Account.Health_Score: authority is health_model, not Health_model"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "contract_sync",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "unknown"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "billing_sync",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "contract_sync",
+     "matches": 2,
+     "name": "Contact.Role",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Contact.Role: authority is crm, not health_model",
+    "Contact.Role: older than its SLA",
+    "Contact.Role: 2 records match, expected 1",
+    "Contact.Role: last written by contract_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Health_Score: authority is health_model, not contracts",
+    "Account.Health_Score: last written by billing_sync"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "Sales_Rep",
+     "matches": 0,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 200,
+     "last_writer": "agent:other",
+     "matches": 3,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "Contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Opportunity.Renewal_Date: authority is contracts, not Contracts",
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: 3 records match, expected 1",
+    "Opportunity.Renewal_Date: last written by agent:other"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 9000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: older than its SLA",
+    "Account.ARR: last written by sales_rep"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "unknown",
+     "matches": 3,
+     "name": "Account.Health_Score",
+     "source_system": "Health_model"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Account.Description: context only, cannot drive a write",
+    "Account.Health_Score: authority is health_model, not Health_model",
+    "Account.Health_Score: 3 records match, expected 1",
+    "Account.Health_Score: last written by unknown",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 12,
+     "last_writer": "unmapped",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "agent:renewal",
+     "matches": 0,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 1,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Description: last written by unmapped",
+    "Account.Description: context only, cannot drive a write",
+    "Contact.Role: 0 records match, expected 1"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "health_model",
+     "matches": 3,
+     "name": "Account.ARR",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 12,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.ARR: authority is billing, not contracts",
+    "Account.ARR: older than its SLA",
+    "Account.ARR: 3 records match, expected 1",
+    "Account.ARR: last written by health_model"
+   ]
+  },
+  {
+   "decision": "proceed",
+   "reads": [
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": []
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 40,
+     "last_writer": "agent:renewal",
+     "matches": 1,
+     "name": "Contact.Role",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    },
+    {
+     "hours_ago": 5000,
+     "last_writer": "sales_rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "crm"
+    }
+   ],
+   "reasons": [
+    "Opportunity.Renewal_Date: older than its SLA",
+    "Opportunity.Renewal_Date: last written by billing_sync",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "sales_rep",
+     "matches": 2,
+     "name": "Account.Discount",
+     "source_system": "crm"
+    },
+    {
+     "hours_ago": 2,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Account.Discount",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.Discount: no contract"
+   ]
+  },
+  {
+   "decision": "draft",
+   "reads": [
+    {
+     "hours_ago": 30,
+     "last_writer": "health_model",
+     "matches": 1,
+     "name": "Account.Health_Score",
+     "source_system": "health_model"
+    }
+   ],
+   "reasons": [
+    "lowest input tier is advisory"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 100,
+     "last_writer": "unmapped",
+     "matches": 3,
+     "name": "Account.Discount",
+     "source_system": "agent"
+    },
+    {
+     "hours_ago": 100,
+     "last_writer": "billing_sync",
+     "matches": 1,
+     "name": "Account.ARR",
+     "source_system": "billing"
+    }
+   ],
+   "reasons": [
+    "Account.Discount: no contract",
+    "Account.ARR: older than its SLA"
+   ]
+  },
+  {
+   "decision": "ask",
+   "reads": [
+    {
+     "hours_ago": 5000,
+     "last_writer": "Sales_Rep",
+     "matches": 1,
+     "name": "Account.Description",
+     "source_system": "billing"
+    },
+    {
+     "hours_ago": 30,
+     "last_writer": "contract_sync",
+     "matches": 1,
+     "name": "Opportunity.Renewal_Date",
+     "source_system": "contracts"
+    }
+   ],
+   "reasons": [
+    "Account.Description: authority is crm, not billing",
+    "Account.Description: last written by Sales_Rep",
+    "Account.Description: context only, cannot drive a write"
+   ]
+  }
+ ],
+ "contract": {
+  "fields": {
+   "Account.ARR": {
+    "allowed_writers": [
+     "billing_sync"
+    ],
+    "authority": "billing",
+    "freshness_sla_hours": 36,
+    "tier": "action"
+   },
+   "Account.Description": {
+    "allowed_writers": [
+     "sales_rep"
+    ],
+    "authority": "crm",
+    "freshness_sla_hours": 8760,
+    "tier": "context"
+   },
+   "Account.Health_Score": {
+    "allowed_writers": [
+     "health_model"
+    ],
+    "authority": "health_model",
+    "freshness_sla_hours": 168,
+    "tier": "advisory"
+   },
+   "Contact.Role": {
+    "allowed_writers": [
+     "sales_rep",
+     "agent:renewal"
+    ],
+    "authority": "crm",
+    "freshness_sla_hours": 4320,
+    "tier": "action"
+   },
+   "Opportunity.Renewal_Date": {
+    "allowed_writers": [
+     "contract_sync"
+    ],
+    "authority": "contracts",
+    "freshness_sla_hours": 36,
+    "tier": "action"
+   }
+  }
+ },
+ "generated_by": "salesforce/scripts/make_gate_cases.py"
+}

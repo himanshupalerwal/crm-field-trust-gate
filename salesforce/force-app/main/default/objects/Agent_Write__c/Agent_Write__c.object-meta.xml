@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Provenance for agent writes: what the agent wrote or proposed, from which inputs, and who confirmed it.</description>
+    <enableActivities>false</enableActivities>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <label>Agent Write</label>
+    <nameField>
+        <displayFormat>AW-{00000}</displayFormat>
+        <label>Agent Write</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Agent Writes</pluralLabel>
+    <sharingModel>Read</sharingModel>
+</CustomObject>

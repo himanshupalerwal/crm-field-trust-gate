@@ -1,0 +1,26 @@
+fields:
+  Account.ARR:
+    authority: billing
+    freshness_sla_hours: 36        # nightly sync, plus slack
+    allowed_writers: [billing_sync]
+    tier: action
+  Opportunity.Renewal_Date:
+    authority: contracts
+    freshness_sla_hours: 36
+    allowed_writers: [contract_sync]
+    tier: action
+  Account.Health_Score:
+    authority: health_model
+    freshness_sla_hours: 168
+    allowed_writers: [health_model]
+    tier: advisory
+  Contact.Role:
+    authority: crm
+    freshness_sla_hours: 4320      # re-confirm roles twice a year
+    allowed_writers: [sales_rep, agent:renewal]
+    tier: action
+  Account.Description:
+    authority: crm
+    freshness_sla_hours: 8760
+    allowed_writers: [sales_rep]
+    tier: context

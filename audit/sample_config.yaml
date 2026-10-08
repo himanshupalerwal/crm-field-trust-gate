@@ -1,0 +1,91 @@
+# Audit config for the fake sample org. Copy this to audit/my_config.yaml for your own org
+# and point the file paths at your exports (keep them in a data/ folder that git ignores).
+
+contract: ../field_contract.yaml        # the field trust contract the gate enforces
+as_of: "2026-10-07T12:00:00Z"           # freshness is measured as of this time; remove for "now"
+min_group_size: 20                      # percentages over fewer records are suppressed
+reversal_window_days: 30
+
+# Contract field name -> where it lives in your exports
+fields:
+  Account.ARR:              {object: Account, column: ARR__c}
+  Account.Health_Score:     {object: Account, column: Health_Score__c}
+  Opportunity.Renewal_Date: {object: Opportunity, column: Renewal_Date__c}
+
+# One CSV per object
+records:
+  Account:
+    file: sample_data/accounts.csv
+    id_column: Id
+    match_key: Website                  # duplicates = records sharing a normalized website domain
+    last_modified_column: LastModifiedDate
+    sync_columns:                       # field column -> column holding its last sync time
+      ARR__c: ARR_Synced_At__c
+  Opportunity:
+    file: sample_data/opportunities.csv
+    id_column: Id
+    last_modified_column: LastModifiedDate
+    sync_columns:
+      Renewal_Date__c: Renewal_Synced_At__c
+
+# Field history exports
+history:
+  - file: sample_data/account_history.csv
+    object: Account
+    record_column: AccountId
+    field_column: Field
+    user_column: CreatedById
+    date_column: CreatedDate
+  - file: sample_data/opportunity_history.csv
+    object: Opportunity
+    record_column: OpportunityId
+    field_column: Field
+    user_column: CreatedById
+    date_column: CreatedDate
+
+# Who is who: map users to the writer labels used in the contract
+writers:
+  users_file: sample_data/users.csv
+  id_column: Id
+  username_column: Username
+  profile_column: Profile.Name
+  by_username:
+    billing.sync@example.com: billing_sync
+    contract.sync@example.com: contract_sync
+    health.model@example.com: health_model
+    agent.renewal@example.com: agent:renewal
+  by_profile:
+    Sales User: sales_rep
+  default: unmapped                   # users you do not map; never confused with "no history"
+
+# Writer label -> the system it speaks for. Map an agent to the system it writes into (here
+# the CRM): on a CRM-owned field it may fill in, such as Contact.Role, its value then reads as
+# advisory (a draft); on a field another system owns, such as ARR, it still fails authority.
+# Agent labels you leave out map to "agent".
+systems:
+  billing_sync: billing
+  contract_sync: contracts
+  health_model: health_model
+  sales_rep: crm
+  agent:renewal: crm
+
+# Writers whose changes count as automated, for the reversal rate
+automated_writers: [billing_sync, contract_sync, health_model]
+
+# Optional: compare CRM values with an extract from the authoritative system
+source_of_truth:
+  Account.ARR:
+    file: sample_data/billing_arr.csv
+    key_column: account_id
+    value_column: arr
+    type: number
+    tolerance: 0.005
+
+# Agent actions to run through the gate in shadow mode (read-only)
+actions:
+  update_renewal_quote:
+    primary: Opportunity
+    filter: "Type == 'Renewal'"
+    inputs: [Opportunity.Renewal_Date, Account.ARR]
+    lookups:
+      Account: AccountId               # Opportunity column that points at the Account

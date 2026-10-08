@@ -1,0 +1,30 @@
+{
+  "seeds": 20,
+  "experiment_1_rates": {
+    "arr": {
+      "stale_changed": 0.04,
+      "stale_unchanged": 0.06,
+      "rep_override": 0.03,
+      "duplicate": 0.03,
+      "agent_written": 0.05,
+      "upstream_wrong": 0.01
+    },
+    "renewal_date": {
+      "stale_changed": 0.02,
+      "manual_edit": 0.02
+    }
+  },
+  "duplicate_correct": 0.5,
+  "agent_written_correct": 0.7,
+  "manual_edit_correct": 0.5,
+  "experiment_2": {
+    "accounts": 1000,
+    "missing_at_start": 0.3,
+    "human_value_wrong": 0.05,
+    "agent_inference_right": 0.75,
+    "batch_per_week": 250,
+    "review_budget": 60,
+    "review_catch_rate": 0.9,
+    "weeks": 12
+  }
+}

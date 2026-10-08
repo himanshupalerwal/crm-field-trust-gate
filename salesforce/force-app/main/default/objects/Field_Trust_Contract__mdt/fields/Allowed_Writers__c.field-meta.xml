@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allowed_Writers__c</fullName>
+    <description>Writer labels allowed to write this field, separated by commas</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Allowed Writers</label>
+    <required>true</required>
+    <type>TextArea</type>
+</CustomField>

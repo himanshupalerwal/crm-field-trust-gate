@@ -1,0 +1,48 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q tests
+      - name: README shows what the example prints
+        run: |
+          diff <(sed -n '/^\$ python examples\/renewal_agent.py$/,/^```$/p' README.md | sed '1d;$d') \
+               <(python examples/renewal_agent.py)
+
+  oldest-versions:
+    # the lowest versions requirements.txt allows; results/ must still come out the same
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.10"
+      - run: pip install numpy==1.26.0 pandas==2.2.2 pyyaml==6.0 matplotlib==3.8.4 cairosvg==2.7.0 pytest==8.0.0 mcp==2.3.0
+      - run: python -m pytest -q tests
+      - run: python simulate.py > /dev/null
+      - run: git diff --exit-code results/
+
+  reproduce:
+    # the committed results/ and the example audit report must come out byte for byte the same
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-lock.txt
+      - run: python simulate.py > /dev/null
+      - run: git diff --exit-code results/
+      - run: |
+          python audit/make_sample_data.py
+          python audit/crm_audit.py --config audit/sample_config.yaml --out reports/sample > /dev/null
+          tail -n +3 audit/example_report.md | diff - reports/sample/report.md

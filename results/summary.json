@@ -1,0 +1,67 @@
+{
+  "exp1": {
+    "wrong_no_gate": 134.8,
+    "wrong_auto_with_gate": 9.9,
+    "held_total": 235.9,
+    "held_but_right": 111.0,
+    "share_of_right_writes_held": 0.128,
+    "held_but_right_by_condition": {
+      "arr:agent_written": 34.5,
+      "arr:duplicate": 13.5,
+      "arr:stale_unchanged": 56.2,
+      "renewal_date:manual_edit": 6.7
+    },
+    "if_reviewers_catch_90pct": 22.4,
+    "if_same_reviews_spent_at_random": 103.0,
+    "if_metadata_reveals_80pct_of_defects": 33.6,
+    "if_both_90pct_catch_and_80pct_metadata": 43.7
+  },
+  "exp2": {
+    "random_audit": {
+      "wrong_sends_12wk": 252.2,
+      "from_agent_guesses": 183.2,
+      "from_human_entries": 69.0,
+      "reviews_used": 720.0,
+      "quotes_sent": 3000.0,
+      "wrong_per_1000_sent": 84.0,
+      "drafts_waiting_at_end": 0.0
+    },
+    "check_outgoing": {
+      "wrong_sends_12wk": 194.8,
+      "from_agent_guesses": 132.8,
+      "from_human_entries": 62.1,
+      "reviews_used": 720.0,
+      "quotes_sent": 3000.0,
+      "wrong_per_1000_sent": 65.0,
+      "drafts_waiting_at_end": 0.0
+    },
+    "history_only": {
+      "wrong_sends_12wk": 126.8,
+      "from_agent_guesses": 18.9,
+      "from_human_entries": 108.0,
+      "reviews_used": 720.0,
+      "quotes_sent": 3000.0,
+      "wrong_per_1000_sent": 42.3,
+      "drafts_waiting_at_end": 0.0
+    },
+    "provenance_drafts_only": {
+      "wrong_sends_12wk": 128.7,
+      "from_agent_guesses": 20.4,
+      "from_human_entries": 108.2,
+      "reviews_used": 291.2,
+      "quotes_sent": 2992.2,
+      "wrong_per_1000_sent": 43.0,
+      "drafts_waiting_at_end": 0.0
+    },
+    "provenance": {
+      "wrong_sends_12wk": 102.3,
+      "from_agent_guesses": 18.6,
+      "from_human_entries": 83.8,
+      "reviews_used": 720.0,
+      "quotes_sent": 2992.2,
+      "wrong_per_1000_sent": 34.2,
+      "drafts_waiting_at_end": 0.0
+    },
+    "reviews_available": 720
+  }
+}

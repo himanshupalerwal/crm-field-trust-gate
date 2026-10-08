@@ -1,0 +1,8 @@
+metric,mean,min,max
+auto_right,754.2,722,779
+auto_wrong,9.9,4,21
+held_wrong,125.0,103,147
+held_right,111.0,97,133
+no_gate_wrong,134.8,114,158
+draft,0.0,0,0
+ask,235.9,210,270

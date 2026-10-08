@@ -1,0 +1,6 @@
+defect_rate_multiplier,wrong_no_gate,wrong_with_gate,share_written_autonomously,correct_writes_held
+0.5,69.7,4.9,0.875,60.4
+1.0,134.8,9.9,0.764,111.0
+1.5,202.8,14.6,0.647,165.2
+2.0,265.9,20.9,0.54,215.2
+3.0,392.8,26.9,0.327,307.4

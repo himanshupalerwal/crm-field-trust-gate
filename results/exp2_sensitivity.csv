@@ -1,0 +1,5 @@
+agent_inference_right,random_audit,check_outgoing,history_only,provenance_drafts_only,provenance
+0.65,323.9,248.2,125.3,131.8,107.0
+0.75,252.2,194.8,126.8,128.7,102.3
+0.85,188.4,152.5,119.2,117.5,91.8
+0.95,105.2,90.5,110.3,111.7,84.8

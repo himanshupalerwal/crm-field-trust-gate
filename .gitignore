@@ -1,0 +1,18 @@
+# Real exports and reports never go in git
+data/
+reports/
+audit/sample_data/
+audit/my_config.yaml
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Salesforce CLI state, and what the e2e script generates in its own project
+salesforce/.sf/
+salesforce/.sfdx/
+salesforce/e2e/.sf/
+salesforce/e2e/.sfdx/
+salesforce/e2e/source/main/default/customMetadata/
+salesforce/e2e/source/main/default/aiAuthoringBundles/
+salesforce/e2e/source/main/default/bots/
+salesforce/e2e/source/main/default/genAiPlannerBundles/

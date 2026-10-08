@@ -1,0 +1,17 @@
+{
+  "orgName": "crm-field-trust-gate e2e",
+  "edition": "Developer",
+  "hasSampleData": false,
+  "features": ["Einstein1AIPlatform", "ServiceCloud"],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "EinsteinGptSettings": {
+      "enableEinsteinGptPlatform": true
+    },
+    "agentPlatformSettings": {
+      "enableAgentPlatform": true
+    }
+  }
+}

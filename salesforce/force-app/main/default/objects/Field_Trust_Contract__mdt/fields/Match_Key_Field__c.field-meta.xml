@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Match_Key_Field__c</fullName>
+    <description>Optional: field whose value identifies the real-world entity, used to count duplicates</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Match Key Field</label>
+    <required>false</required>
+    <type>Text</type>
+    <length>80</length>
+    <unique>false</unique>
+</CustomField>

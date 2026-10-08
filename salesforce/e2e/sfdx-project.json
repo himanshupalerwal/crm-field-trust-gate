@@ -1,0 +1,8 @@
+{
+  "packageDirectories": [
+    { "path": "source", "default": true }
+  ],
+  "name": "crm-field-trust-gate-e2e",
+  "namespace": "",
+  "sourceApiVersion": "65.0"
+}
